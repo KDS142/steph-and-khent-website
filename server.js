@@ -8,11 +8,12 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(__dirname));
 
 // Database connection
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false }
+  ssl: { rejectUnauthorized: true }
 });
 
 // GET: Fetch live updates from Supabase
@@ -56,4 +57,8 @@ app.post('/api/request', async (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server running with PostgreSQL at http://localhost:${PORT}`);
+
+  const fs = require('fs');
+  console.log('__dirname is:', __dirname);
+  console.log('Files in __dirname:', fs.readdirSync(__dirname));
 });
