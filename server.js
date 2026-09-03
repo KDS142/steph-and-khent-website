@@ -57,8 +57,4 @@ app.post('/api/request', async (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server running with PostgreSQL at http://localhost:${PORT}`);
-
-  const fs = require('fs');
-  console.log('__dirname is:', __dirname);
-  console.log('Files in __dirname:', fs.readdirSync(__dirname));
 });

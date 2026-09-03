@@ -440,6 +440,32 @@ function tick() {
 }
 
 /* --------------------------------------------------
+   THEME TOGGLE
+-------------------------------------------------- */
+const themeToggle = document.getElementById("themeToggle");
+
+// Initial load
+if (localStorage.getItem("theme") === "light") {
+  document.documentElement.setAttribute("data-theme", "light");
+  if (themeToggle) themeToggle.checked = true;
+} else {
+  if (themeToggle) themeToggle.checked = false;
+}
+
+// Listen for checkbox toggle
+themeToggle?.addEventListener("change", (e) => {
+  if (e.target.checked) {
+    // Switch to Light
+    document.documentElement.setAttribute("data-theme", "light");
+    localStorage.setItem("theme", "light");
+  } else {
+    // Switch to Dark
+    document.documentElement.removeAttribute("data-theme");
+    localStorage.setItem("theme", "dark");
+  }
+});
+
+/* --------------------------------------------------
    INITIALIZE
 -------------------------------------------------- */
 

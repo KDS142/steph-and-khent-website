@@ -1064,3 +1064,229 @@ footer p + p {
     transform: none;
   }
 }
+
+/* ---------- Pill Switch Container ---------- */
+.theme-switch-wrapper {
+  display: inline-flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+/* Hide the default checkbox completely */
+.theme-checkbox {
+  display: none;
+}
+
+/* The Pill Track */
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 56px;
+  height: 28px;
+  background-color: #0d131f; /* Night background */
+  border-radius: 28px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* The Sliding Sun/Moon Knob */
+.theme-knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  background-color: #b0bac5; /* Moon color */
+  border-radius: 50%;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+  box-shadow: inset -2px -2px 0px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Cute Face (Eyes and Smile) inside the knob */
+.theme-knob::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 5px;
+  width: 10px;
+  height: 6px;
+  background: 
+    radial-gradient(circle, rgba(0, 0, 0, 0.4) 1px, transparent 1px) 1px 1px / 3px 3px no-repeat,
+    radial-gradient(circle, rgba(0, 0, 0, 0.4) 1px, transparent 1px) 7px 1px / 3px 3px no-repeat;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+  border-radius: 0 0 50% 50%;
+}
+
+/* Checked (Day / Light Mode) State */
+.theme-checkbox:checked + .theme-switch {
+  background-color: #5bb3ff; /* Day sky background */
+}
+
+.theme-checkbox:checked + .theme-switch .theme-knob {
+  transform: translateX(28px);
+  background-color: #ffd800;
+  box-shadow: inset -2px -2px 0px rgba(200, 140, 0, 0.4), 0 0 8px rgba(255, 220, 0, 0.8);
+}
+
+[data-theme="light"] {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-raised: #f1f5f9;
+  --line: #cbd5e1;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-faint: #94a3b8;
+}
+
+/* Apply light theme overrides to the main layout elements */
+[data-theme="light"] body {
+  background-color: var(--bg);
+  color: var(--text-main);
+  background-image: radial-gradient(ellipse 900px 520px at 50% -12%, rgba(13, 148, 136, 0.08), transparent 62%);
+}
+
+[data-theme="light"] .ticker {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid var(--line);
+}
+
+[data-theme="light"] .ticker-title,
+[data-theme="light"] h1, 
+[data-theme="light"] h2, 
+[data-theme="light"] h3 {
+  color: var(--text-main);
+}
+
+[data-theme="light"] p, 
+[data-theme="light"] span {
+  color: var(--text-muted);
+}
+/* ---------- Light Mode Form Controls ---------- */
+[data-theme="light"] input[type="text"],
+[data-theme="light"] input[type="number"],
+[data-theme="light"] select,
+[data-theme="light"] textarea {
+  background-color: #ffffff;
+  color: #0f172a;
+  border: 1px solid #cbd5e1;
+}
+
+[data-theme="light"] input:focus,
+[data-theme="light"] select:focus,
+[data-theme="light"] textarea:focus {
+  border-color: #0d9488;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(13, 148, 136, 0.15);
+}
+
+/* Quantity buttons and input styling in light mode */
+[data-theme="light"] button,
+[data-theme="light"] .qty-btn {
+  background-color: #f1f5f9;
+  color: #0f172a;
+  border: 1px solid #cbd5e1;
+}
+
+[data-theme="light"] button:hover {
+  background-color: #e2e8f0;
+}
+
+/* ---------- Light Mode Dropdown Options ---------- */
+[data-theme="light"] select {
+  background-color: #ffffff;
+  color: #0f172a;
+}
+
+[data-theme="light"] select option {
+  background-color: #ffffff;
+  color: #0f172a;
+}
+
+[data-theme="light"] button[type="submit"]:hover,
+[data-theme="light"] input[type="submit"]:hover {
+  background-color: #f1f5f9;
+  border-color: #cbd5e1;    
+}
+
+[data-theme="light"] .btn-ghost {
+  color: #0f172a;
+}
+
+[data-theme="light"] .btn-ghost:hover {
+  color: #0d9488;
+}
+
+[data-theme="light"] .rates-table th {
+  color: #94a3b8; 
+  border-bottom-color: #cbd5e1;
+}
+
+[data-theme="light"] .rates-table td {
+  color: #64748b; 
+  border-bottom-color: #cbd5e1;
+  transition: color 0.15s ease;
+}
+
+[data-theme="light"] .rates-table td strong {
+  color: #0f172a !important; 
+}
+
+[data-theme="light"] .rates-table tbody tr:hover td {
+  color: #0f172a; 
+}
+
+[data-theme="light"] .rates-table td:last-child,
+[data-theme="light"] .rates-table td .fee {
+  color: #0d9488 !important; 
+}
+
+[data-theme="light"] body::before {
+  display: none;
+}
+
+.ticker-date {
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  color: var(--text); 
+}
+
+[data-theme="light"] .ticker-date {
+  color: #0f172a !important; 
+}
+
+.ticker-countdown {
+  background-color: var(--amber-wash);
+  border: 1px solid rgba(255, 176, 32, 0.3);
+  color: var(--amber);
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  width: max-content !important;
+  min-width: 210px; 
+  max-width: 100%;
+  text-align: center;
+}
+
+[data-theme="light"] .ticker-countdown {
+  background-color: #fffbeb; 
+  border-color: #fcd34d;
+  color: #b45309 !important; 
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Allow the text to wrap safely on small screens */
+@media (max-width: 620px) {
+  .ticker-countdown {
+    width: fit-content !important; 
+    min-width: auto; 
+    max-width: 100%; 
+    white-space: normal; 
+    font-size: 0.75rem;
+    padding: 0.35rem 0.6rem;
+    margin-right: auto; 
+    line-height: 1.4;
+  }
+}
