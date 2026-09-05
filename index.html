@@ -29,7 +29,7 @@
         ></span>
 
         <div class="theme-switch-wrapper">
-          <input type="checkbox" id="themeToggle" class="theme-checkbox">
+          <input type="checkbox" id="themeToggle" class="theme-checkbox" />
           <label for="themeToggle" class="theme-switch">
             <span class="theme-knob"></span>
           </label>
@@ -77,82 +77,49 @@
             <div class="section-index">01 / REQUEST</div>
             <h2>Request a Pasabay</h2>
             <p class="section-note">
-              Enter your details below for a live estimate before submitting.
+              Fill out the form below to submit your request.
             </p>
           </div>
 
-          <div class="panel">
-            <form id="pasabayForm" novalidate>
-              <div class="field">
-                <label for="name">Full Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="studentName"
-                  autocomplete="name"
-                  placeholder="Juan Dela Cruz"
-                  required
-                />
-              </div>
-
-              <div class="field">
-                <label for="service">Service Type</label>
-                <select id="service" name="serviceType" required>
-                  <option value="standard">Standard Delivery</option>
-                  <option value="bluebook">Blue Book</option>
-                  <option value="special">Special Delivery</option>
-                  <option value="non-dost">Non-DOST Delivery or Pick-up</option>
-                </select>
-              </div>
-
-              <div class="field">
-                <label for="qty">Quantity</label>
-
-                <div class="qty-row">
-                  <button
-                    class="stepper-btn"
-                    type="button"
-                    data-step="-1"
-                    aria-label="Decrease quantity"
-                  >
-                    −
-                  </button>
-
-                  <input
-                    type="number"
-                    id="qty"
-                    name="quantity"
-                    min="1"
-                    step="1"
-                    value="1"
-                    inputmode="numeric"
-                    required
-                  />
-
-                  <button
-                    class="stepper-btn"
-                    type="button"
-                    data-step="1"
-                    aria-label="Increase quantity"
-                  >
-                    +
-                  </button>
-                </div>
-              </div>
-
-              <div class="estimate" aria-live="polite">
-                <span>Estimated pasabay fee</span>
-                <strong>₱35</strong>
-              </div>
-
-              <p class="closed-note">
-                Full payment is required via GCash/Maya before purchases are
-                made. No cancellations after the stated cut-off.
-              </p>
-
-              <button class="btn" type="submit">Submit Request</button>
-            </form>
+          <div class="panel panel--embed">
+            <iframe
+              data-tally-src="https://tally.so/embed/ODNJBa?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+              loading="lazy"
+              width="100%"
+              height="400"
+              frameborder="0"
+              marginheight="0"
+              marginwidth="0"
+              title="DOST Scholars Pasabay Request Form"
+              class="tally-embed"
+            ></iframe>
+            <script>
+              var d = document,
+                w = "https://tally.so/widgets/embed.js",
+                v = function () {
+                  "undefined" != typeof Tally
+                    ? Tally.loadEmbeds()
+                    : d
+                        .querySelectorAll("iframe[data-tally-src]")
+                        .forEach(function (e) {
+                          e.src = e.dataset.tallySrc;
+                        });
+                };
+              if ("undefined" != typeof Tally) v();
+              else if (d.querySelector('script[src="' + w + '"]') == null) {
+                var s = d.createElement("script");
+                ((s.src = w),
+                  (s.onload = v),
+                  (s.onerror = v),
+                  d.body.appendChild(s));
+              } else v();
+            </script>
           </div>
+
+          <p class="closed-note">
+            Full payment is required via GCash/Maya before purchases are made.
+            No cancellations after the stated cut-off.
+          </p>
         </section>
 
         <!-- HOW IT WORKS -->
@@ -200,7 +167,7 @@
             <h2>Pasabay Rates</h2>
 
             <p class="section-note">
-              Current rates used by the live estimate above.
+              Reference these rates when filling out the request form.
             </p>
           </div>
 
@@ -273,60 +240,10 @@
           </div>
         </section>
 
-        <!-- TRACKING -->
-        <section id="requests" class="section">
-          <div class="section-head">
-            <div class="section-index">04 / TRACKING</div>
-            <h2>Request Tracking</h2>
-
-            <p class="section-note">
-              Your latest submission is acknowledged here after a successful
-              request.
-            </p>
-          </div>
-
-          <div id="receipt" class="receipt" hidden>
-            <h3>Request received</h3>
-
-            <p>Your request has been logged successfully.</p>
-
-            <div class="receipt-row">
-              <span>Service</span>
-              <strong data-receipt="service">—</strong>
-            </div>
-
-            <div class="receipt-row">
-              <span>Quantity</span>
-              <strong data-receipt="quantity">—</strong>
-            </div>
-
-            <div class="receipt-row">
-              <span>Estimated total</span>
-              <strong data-receipt="total">—</strong>
-            </div>
-          </div>
-
-          <div class="ticket-list" id="ticketList">
-            <article class="ticket">
-              <div>
-                <div class="ticket-id">PASABAY · READY</div>
-
-                <div class="ticket-meta">
-                  Submit a request to generate your tracking entry.
-                </div>
-              </div>
-
-              <div class="ticket-total">—</div>
-
-              <span class="status-pill">Awaiting request</span>
-            </article>
-          </div>
-        </section>
-
         <!-- UPDATES -->
         <section id="updates" class="section">
           <div class="section-head">
-            <div class="section-index">05 / UPDATES</div>
+            <div class="section-index">04 / UPDATES</div>
             <h2>Recent Updates</h2>
 
             <p class="section-note">Announcements pulled from the server.</p>
@@ -353,8 +270,6 @@
         </div>
       </footer>
     </div>
-
-    <div class="toast-stack" aria-live="polite" aria-atomic="true"></div>
 
     <script src="script.js" defer></script>
   </body>
